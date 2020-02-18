@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import urllib.parse
+
 import scrapy
 
 
@@ -20,4 +22,13 @@ class RsspiderSpider(scrapy.Spider):
         self.start_urls.append(self.base_url)
 
     def parse(self, response):
-        pass
+        # scheme='https', netloc='www.baidu.com', path='', params='', query='', fragment=''
+        for link in response.xpath('//a/@href').extract():
+            u = urllib.parse.urlparse(link)
+            if u.scheme == 'http' or u.scheme == 'https':
+                link = u.scheme + "://" + u.netloc + u.path + u.params + u.query + u.fragment
+                print(link)
+            elif u.scheme == "":
+                link = response.url + u.path + u.params + u.query + u.fragment
+                print(link)
+
