@@ -8,13 +8,17 @@
 import scrapy
 
 
-class VulhubItem(scrapy.Item):
-    name = scrapy.Field()
-    level = scrapy.Field()
-    vuln_link = scrapy.Field()
-    payload = scrapy.Field()
-    response_content = scrapy.Field()
-    request_content = scrapy.Field()
+#class VulhubItem(scrapy.Item):
+#    name = scrapy.Field()
+#    level = scrapy.Field()
+#    vuln_link = scrapy.Field()
+#    payload = scrapy.Field()
+#    response_content = scrapy.Field()
+#    request_content = scrapy.Field()
+
+
+class UrlItem(scrapy.Item):
+    url = scrapy.Field()
 
 
 class ShreddedmeatItem(scrapy.Item):
